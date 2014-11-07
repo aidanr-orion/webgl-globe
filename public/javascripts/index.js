@@ -11,38 +11,30 @@ globe.addPoint(21, 78);
 // Mongolia
 globe.addPoint(46, 105);
 
-// Create with socket.io?
-var socket = new WebSocket("ws://localhost:8000", "echo-protocol");
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.open("GET", "/data", false);
+xmlHttp.send( null );
+var points = JSON.parse(xmlHttp.responseText);
 
-socket.onopen = function(){
-   /*Send a small message to the console once the connection is established */
-   console.log('Connection open!');
-}
-socket.onmessage = function(evt) {
-  var recievedData = evt.data;
-  var pos = JSON.parse(recievedData);
-  globe.addPoint(pos.lat, pos.lng);
-}
-var done = false;
-var test = function() {
-      if(done) return;
-      var pos = genereateLatLng();
-      var message = JSON.stringify(pos);
-      socket.send(message);
-      setTimeout(test, 100);
-};
-socket.onopen = function(){
-  test();
-}
+points.forEach(function(point) {
+  var date = new Date();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  if(point.hr <= hour && point.min <= minute) return;
+  var millisTill10 = new Date(date.getFullYear(), date.getMonth(), date.getDate(), point.hr, point.min, 0, 0) - date;
+  timeoutPoint(point.lat, point.lng, millisTill10);
+});
 
-function genereateLatLng() {
-  var pos = {};
-  pos.lat = getRandomInRange(-180, 180, 3);
-  pos.lng = getRandomInRange(-180, 180, 3);
-  return pos;
+
+function timeoutPoint(lat, lng, time){
+ setTimeout(plotPoint(lat, lng), time);
+}
+function plotPoint (lat, lng){
+  return function(){
+    console.log("point: " + new Date());
+    globe.addPoint(lat, lng);
+  };
 }
 
-function getRandomInRange(from, to, fixed) {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-    // .toFixed() returns string, so ' * 1' is a trick to convert to number
-}
+
+timeoutStuff(46, 105, 1000);
