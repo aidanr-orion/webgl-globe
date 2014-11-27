@@ -1,0 +1,20 @@
+{
+  "Name": "Orion-Globe on dev / aidanr@ca.ibm.com",
+  "ServiceId": "com.ibm.cloudoe.orion.client.deploy",
+  "Params": {
+    "Target": {
+      "Url": "https://api.ng.bluemix.net",
+      "Org": "aidanr@ca.ibm.com",
+      "OrgId": "9f8a8e71-2c68-4138-aa53-237113ecffc2",
+      "Space": "dev",
+      "SpaceId": "3f392536-2ce5-4c5e-ad2c-4697441e90c1"
+    },
+    "Name": "Orion-Globe",
+    "AppId": "0ccef92e-3e5e-4c82-b3ef-43a924ae51f7",
+    "Timeout": 60
+  },
+  "Url": "http://Orion-Globe.mybluemix.net",
+  "ManageUrl": "https://console.ng.bluemix.net#/resources/appGuid=0ccef92e-3e5e-4c82-b3ef-43a924ae51f7&orgGuid=9f8a8e71-2c68-4138-aa53-237113ecffc2&spaceGuid=3f392536-2ce5-4c5e-ad2c-4697441e90c1",
+  "Path": "",
+  "Type": "Cloud Foundry"
+}

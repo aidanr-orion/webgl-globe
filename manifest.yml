@@ -1,9 +1,9 @@
 ---
 applications:
-  - name: Orion-Globe
-    memory: 512M
-    instances: 1
-    host: Orion-Globe
-    domain: mybluemix.net
-    path: .
-    command: node app.js
+- memory: 512M
+  domain: mybluemix.net
+  path: .
+  host: Orion-Globe
+  name: Orion-Globe
+  command: node app.js
+  instances: 1
