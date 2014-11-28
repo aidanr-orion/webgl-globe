@@ -127,17 +127,17 @@ DAT.Globe = function(container, opts) {
         var lat, lng, size, color;
 
         var step = 3;
-        var colorFnWrapper = function(data, i) {
-            return colorFn(data[i + 2]);
+        var colorFnWrapper = function(size) {
+            return colorFn(size);
         }
 
         var subgeo = new THREE.Geometry();
         for (var i = 0; i < data.length; i += step) {
             lat = data[i];
             lng = data[i + 1];
-            color = colorFnWrapper(data, i);
+            color = colorFnWrapper(data[i + 2]/10);
             size = data[i + 2];
-            size = size * 2;
+            size = size * 10;
             addPoint(lat, lng, size, color, subgeo);
         }
         this._baseGeometry = subgeo;
