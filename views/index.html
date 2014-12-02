@@ -3,19 +3,44 @@
   <head>
     <title>Orion Globe</title>
     <meta charset="utf-8">
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/third-party/daterangepicker-bs3.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+
   </head>
-  <body>
+  <body style="background-color: #000;">
+    <!-- Globe Container -->
+    <div id="globeContainer"></div>
+    <!-- Date Range -->
+    <div class="date-picker">
+      <label class="control-label orion-white" for="dateRange">Choose your date range:</label>
+      <div id="daterange" class="selectbox pull-right">
+          <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+          <span></span>
+          <b class="caret"></b>
+      </div>
+      <button class="applyBtn btn-success orionBtn" id="updateBtn">Update</button>
 
-  <div id="container"></div>
-
-  <script type="text/javascript" src="/javascripts/third-party/Detector.js"></script>
-  <script type="text/javascript" src="/javascripts/third-party/three.min.js"></script>
-  <script type="text/javascript" src="/javascripts/third-party/Tween.js"></script>
-  <script type="text/javascript" src="/javascripts/shaders.js"></script>
-  <script type="text/javascript" src="/javascripts/orionPoint.js"></script>
-  <script type="text/javascript" src="/javascripts/globe.js"></script>
-  <script type="text/javascript" src="/javascripts/index.js"></script>
+    </div>
+    <!-- Title -->
+    <div id="title" class="orion-white">
+      Orion Globe
+    </div>
+    <!-- Date picker files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/third-party/moment.min.js"></script>
+    <script type="text/javascript" src="/javascripts/third-party/daterangepicker.js"></script>
+    <!-- Globe files -->
+    <script type="text/javascript" src="/javascripts/third-party/Detector.js"></script>
+    <script type="text/javascript" src="/javascripts/third-party/three.min.js"></script>
+    <script type="text/javascript" src="/javascripts/third-party/Tween.js"></script>
+    <script type="text/javascript" src="/javascripts/shaders.js"></script>
+    <script type="text/javascript" src="/javascripts/globe.js"></script>
+    <!-- Page Files -->
+    <script type="text/javascript" src="/javascripts/index.js"></script>
 
   </body>
 

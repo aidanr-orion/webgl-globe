@@ -154,6 +154,10 @@ DAT.Globe = function(container, opts) {
         }
     }
 
+    function removePoints() {
+        scene.remove(this.points);
+    }
+
     function addPoint(lat, lng, size, color, subgeo) {
         var phi = (90 - lat) * Math.PI / 180;
         var theta = (180 - lng) * Math.PI / 180;
@@ -281,6 +285,7 @@ DAT.Globe = function(container, opts) {
         this.points.morphTargetInfluences[index] = leftover;
         this._time = t;
     });
+    this.removePoints = removePoints;
     this.addData = addData;
     this.createPoints = createPoints;
     this.renderer = renderer;

@@ -17,12 +17,24 @@ var gapi = new GAPI({
 	});
 });
 
+function formatDate(date) {
+	var year = date.getFullYear();
+	var month = date.getMonth();
+	var date = date.getDate();
+	if(month <= 9)
+		month = "0" + month;
+	if(date <= 9)
+		date = "0" + date;
+	return year + "-" + month + "-" + date;
+}
 
 function parseOptions(req) {
+	var startDate = new Date(req.query.startDate);
+	var endDate = new Date(req.query.endDate);
 	var options = {
 		'ids': process.env.GOOGLE_PROFILE_ID,
-		'start-date': 'yesterday',
-		'end-date': 'yesterday',
+		'start-date': formatDate(startDate),
+		'end-date': formatDate(endDate),
 		'dimensions': 'ga:latitude, ga:longitude, ga:hour, ga:minute',
 		'metrics': ['ga:sessions'],
 		'sort': 'ga:hour, ga:minute'
@@ -47,7 +59,10 @@ router.get('/data/', function(req, res) {
 		});
 		var options = parseOptions(req);
 		ga.get(options, function(err, entries) {
-			if (err) return res.json(err);
+			if (err) {
+				console.log(err);
+				return res.json(err);
+			}
 			var points = entries.map(function(val) {
 				var dim = val.dimensions[0];
 				var point = {
