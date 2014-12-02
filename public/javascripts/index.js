@@ -4,7 +4,7 @@ if (!Detector.webgl) {
 }
 
 function getPoints(callback) {
-	var params = "startDate=" + encodeURIComponent(endDate._d) + "&endDate=" + encodeURIComponent(startDate._d);
+	var params = "startDate=" + encodeURIComponent(startDate._d) + "&endDate=" + encodeURIComponent(endDate._d);
 	var xmlHttp = null;
 	xmlHttp = new XMLHttpRequest();
 	xmlHttp.onreadystatechange = function() {
@@ -51,7 +51,7 @@ $(document).ready(function() {
 		function(start, end, label) {
 			$('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 			startDate = start;
-			startDate = end;
+			endDate = end;
 		});
 
 	$('#updateBtn').on("click", updateGlobe);
